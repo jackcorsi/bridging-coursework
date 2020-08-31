@@ -34,7 +34,7 @@
 <h2>Education</h2>
 {% for institution in institutions %}
     <h3>{{ institution.name }}</h3>
-    <h5> {{ institution.start_date | date:"M yy" }} to {{ institution.end_date | date:"M yy" }}</h5>
+    <h5> {{ institution.start_date | date:"M Y" }} to {{ institution.end_date | date:"M Y" }}</h5>
     <h5>{{ instituion.additional_info }}</h5>
 
     <table class="cv-table">
@@ -63,7 +63,7 @@
 <h2>Experience</h2>
 {% for experience in experiences %}
     <h3><b>{{ experience.role_name }}</b> at <b>{{ experience.place }}</b></h3>
-    {{ experience.start_date | date:"M yy" }} - {{ experience.end_date | date:"M yy" }}
+    {{ experience.start_date | date:"M Y" }} - {{ experience.end_date | date:"M Y" }}
 {% endfor %}
 
 </body>
