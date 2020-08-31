@@ -1,10 +1,70 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <meta charset="UTF-8">
+    <title>CV</title>
 </head>
 <body>
-$END$
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">
+        CV
+    </a>
+    <a class="navbar-brand" href="/">
+        Blog
+    </a>
+</nav>
+
+<h1>Jack Corsi</h1>
+
+<h2>Contact Details</h2>
+
+<table class="cv-table">
+    {% for detail in contact_details %}
+        <tr>
+            <td>{{ detail.name }}</td>
+            <td>{{ detail.value }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<h2>Education</h2>
+{% for institution in institutions %}
+    <h3>{{ institution.name }}</h3>
+    <h5> {{ institution.start_date | date:"M yy" }} to {{ institution.end_date | date:"M yy" }}</h5>
+    <h5>{{ instituion.additional_info }}</h5>
+
+    <table class="cv-table">
+        {% for qual in qualifications %}
+            {% if qual.institution == institution %}
+                <tr>
+                    <td>{{ qual.name }}</td>
+                    <b><td>{{ qual.grade }}</td></b>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+
+{% endfor %}
+
+<h2>Skills</h2>
+<table class="cv-table">
+    {% for skill in skills %}
+            <tr>
+                <td><b>{{ skill.name }}</b></td>
+                <td>{{ skill.subskills }}</td>
+            </tr>
+    {% endfor %}
+</table>
+
+<h2>Experience</h2>
+{% for experience in experiences %}
+    <h3><b>{{ experience.role_name }}</b> at <b>{{ experience.place }}</b></h3>
+    {{ experience.start_date | date:"M yy" }} - {{ experience.end_date | date:"M yy" }}
+{% endfor %}
+
 </body>
 </html>

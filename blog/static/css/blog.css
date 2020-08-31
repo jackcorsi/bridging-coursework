@@ -5,3 +5,7 @@ body {
 h1 a, h2 a {
     color: #FF8833;
 }
+
+.cv-table td {
+    padding: 5px
+}
