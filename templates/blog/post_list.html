@@ -6,7 +6,15 @@
 </head>
 <body>
 
-<p>Paragraph 1</p>
-<p>Paragraph 2</p>
+<h1>Posts</h1>
+
+{% for post in posts %}
+    <div>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>published: {{ post.published_date }}</p>
+        <p>{{ post.text | linebreaksbr }}</p>
+    </div>
+{% endfor %}
+
 </body>
 </html>
